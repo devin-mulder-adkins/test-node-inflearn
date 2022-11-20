@@ -26,4 +26,10 @@ app.get('/', (req, res) => {
 app.listen(PORT)
 console.log(`Running on port ${PORT}`)
 
+
+app.use((err, req, res, next) => {
+    res.status(500).json({message: err.message})
+})
+
+
 module.exports = app
