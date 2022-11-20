@@ -31,6 +31,7 @@ describe("Product Controller Create", () => {
     it("should return 201 response code", async () => {
         await productController.createProduct(req, res, next);
         expect(res.statusCode).toBe(201)
+        expect(res._isEndCalled()).toBeTruthy()
     })
 
     
