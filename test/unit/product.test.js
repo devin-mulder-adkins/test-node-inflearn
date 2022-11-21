@@ -129,4 +129,13 @@ describe("Product Controller GetById", () => {
     })
 
 
+    it("should handle errors", async () => {
+        const errorMessage = { message: "error"}
+        const rejectedPromise = Promise.reject(errorMessage)
+        productModel.findById.mockReturnValue(rejectedPromise)
+        await productController.getProductById(req, res, next)
+        expect(next).toHaveBeenCalledWith(errorMessage)
+    })
+
+
 })
