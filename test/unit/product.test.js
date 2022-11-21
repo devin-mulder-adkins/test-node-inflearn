@@ -181,4 +181,13 @@ describe("Product Controller Update", () => {
     })
 
 
+    it("should handle errors", async () => {
+        const errorMessage = { message: "Error" };
+        const rejectPromise = Promise.reject(errorMessage);
+        productModel.findByIdAndUpdate.mockReturnValue(rejectPromise);
+        await productController.updateProduct(req, res, next);
+        expect(next).toHaveBeenCalledWith(errorMessage)
+    })
+
+
 })
