@@ -207,4 +207,17 @@ describe("Product Controller Delete", () => {
     })
 
 
+    it("should return 200 response ", async () => {
+        let deletedProduct = {
+            name: "deletedProduct",
+            description: "it is deleted"
+        }
+        productModel.findByIdAndDelete.mockReturnValue(deletedProduct)
+        await productController.deleteProduct(req, res, next)
+        expect(res.statusCode).toBe(200)
+        expect(res._getJSONData()).toStrictEqual(deletedProduct)
+        expect(res._isEndCalled()).toBeTruthy();
+    })
+
+
 })
