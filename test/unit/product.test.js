@@ -67,4 +67,11 @@ describe("Product Controller Get", () => {
         expect(productModel.find).toHaveBeenCalledWith({})
     })
 
+
+    it("should return 200 response", async () => {
+        await productController.getProducts(req, res, next)
+        expect(res.statusCode).toBe(200)
+        expect(res._isEndCalled()).toBeTruthy()
+    })
+
 })
