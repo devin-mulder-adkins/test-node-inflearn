@@ -59,4 +59,6 @@ exports.updateProduct = async (req, res, next) => {
 }
 
 
-exports.deleteProduct = async (req, res, next) => {}
+exports.deleteProduct = async (req, res, next) => {
+    await productModel.findByIdAndDelete(req.params.productId)
+}
