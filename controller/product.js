@@ -45,5 +45,10 @@ exports.updateProduct = async (req, res, next) => {
         req.body,
         { new: true }
     )
-    res.status(200).json(updatedProduct)
+    if (updatedProduct) {
+        res.status(200).json(updatedProduct)
+    } else {
+        res.status(404).send()
+    }
+
 }

@@ -173,4 +173,12 @@ describe("Product Controller Update", () => {
     })
 
 
+    it("should handle 404 when item doesnt exist", async () => {
+        productModel.findByIdAndUpdate.mockReturnValue(null);
+        await productController.updateProduct(req, res, next);
+        expect(res.statusCode).toBe(404);
+        expect(res._isEndCalled()).toBeTruthy();
+    })
+
+
 })
