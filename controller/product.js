@@ -37,3 +37,6 @@ exports.getProductById = async (req, res, next) => {
         next(err)
     }
 }
+
+
+exports.updateProduct = async (req, res, next) => {}

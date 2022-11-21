@@ -139,3 +139,13 @@ describe("Product Controller GetById", () => {
 
 
 })
+
+
+
+describe("Product Controller Update", () => {
+    it("should have an updateProduct function", () => {
+        expect(typeof productController.updateProduct).toBe("function")
+    })
+
+
+})
