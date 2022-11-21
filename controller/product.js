@@ -22,3 +22,9 @@ exports.getProducts = async (req, res, next) => {
     }
     
 }
+
+
+
+exports.getProductById = async (req, res, next) => {
+
+}

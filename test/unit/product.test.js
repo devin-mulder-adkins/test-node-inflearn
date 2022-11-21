@@ -92,3 +92,13 @@ describe("Product Controller Get", () => {
     })
 
 })
+
+
+
+describe("Product Controller GetById", () => {
+
+    it("should have a getProductById", () => {
+        expect(typeof productController.getProductById).toBe("function")
+    })
+
+})
