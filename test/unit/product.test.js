@@ -121,4 +121,12 @@ describe("Product Controller GetById", () => {
     })
 
 
+    it("should return 404 when item doesn't exist", async () => {
+        productModel.findById.mockReturnValue(null)
+        await productController.getProductById(req, res, next)
+        expect(res.statusCode).toBe(404)
+        expect(res._isEndCalled()).toBeTruthy()   
+    })
+
+
 })
