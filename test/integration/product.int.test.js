@@ -42,3 +42,9 @@ it("GET /api/products/:productId", async () => {
     expect(response.body.name).toBe(firstProduct.name)
     expect(response.body.description).toBe(firstProduct.description)
 })
+
+
+it("GET id doesn't exist /api/products/:productId", async () => {
+    const response = await request(app).get('/api/products/63799472b7b04e8949c5df88')
+    expect(response.statusCode).toBe(404)
+})
