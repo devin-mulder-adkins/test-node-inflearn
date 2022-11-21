@@ -220,4 +220,12 @@ describe("Product Controller Delete", () => {
     })
 
 
+    it("should handle 404 when item doenst exist", async () => {
+        productModel.findByIdAndDelete.mockReturnValue(null);
+        await productController.deleteProduct(req, res, next);
+        expect(res.statusCode).toBe(404);
+        expect(res._isEndCalled()).toBeTruthy();
+    })
+
+
 })
