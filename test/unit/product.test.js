@@ -10,6 +10,7 @@ productModel.findById = jest.fn();
 productModel.findByIdAndUpdate = jest.fn();
 
 const productId = "5dsfijslkdjfsk"
+const updatedProduct = { name: "updated name", description: "updated description" }
 
 let req, res, next
 
@@ -152,12 +153,23 @@ describe("Product Controller Update", () => {
 
     it("should call productMode.findByIdAndUpdate", async () => {
         req.params.productId = productId
-        req.body = { name: "updated name", description: "updated description" }
+        req.body = updatedProduct
         await productController.updateProduct(req, res, next);
         expect(productModel.findByIdAndUpdate).toHaveBeenCalledWith(
-            productId, { name: "updated name", description: "updated description" },
+            productId, updatedProduct,
             { new: true }
         )
+    })
+
+
+    it("should return json body and response code 200", async () => {
+        req.params.productId = productId
+        req.body = updatedProduct
+        productModel.findByIdAndUpdate.mockReturnValue(updatedProduct)
+        await productController.updateProduct(req, res, next)
+        expect(res._isEndCalled()).toBeTruthy();
+        expect(res.statusCode).toBe(200);
+        expect(res._getJSONData()).toStrictEqual(updatedProduct)
     })
 
 

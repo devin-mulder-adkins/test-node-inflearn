@@ -40,9 +40,10 @@ exports.getProductById = async (req, res, next) => {
 
 
 exports.updateProduct = async (req, res, next) => {
-    await productModel.findByIdAndUpdate(
+    let updatedProduct = await productModel.findByIdAndUpdate(
         req.params.productId,
         req.body,
         { new: true }
     )
+    res.status(200).json(updatedProduct)
 }
